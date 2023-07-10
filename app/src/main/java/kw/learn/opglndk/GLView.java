@@ -14,6 +14,7 @@ import javax.microedition.khronos.opengles.GL10;
 public class GLView extends GLSurfaceView {
     public GLView(Context context) {
         super(context);
+        setEGLContextClientVersion(2);
         setRenderer(new Renderer() {
             @Override
             public void onSurfaceCreated(GL10 gl, EGLConfig config) {
@@ -24,6 +25,8 @@ public class GLView extends GLSurfaceView {
             public void onSurfaceChanged(GL10 gl, int width, int height) {
 //                gl.glViewport(0,0,width,height);
                 NdkLib.create(width,height);
+//                int i = GLES20.glCreateShader(GLES20.GL_VERTEX_SHADER);
+//                System.out.println("libESV2jni  "+i);
             }
 
             @Override
