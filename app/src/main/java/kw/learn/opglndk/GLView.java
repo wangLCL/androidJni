@@ -12,6 +12,7 @@ import javax.microedition.khronos.opengles.GL10;
  * @Date 2023/7/10 9:43
  */
 public class GLView extends GLSurfaceView {
+    private long glObje;
     public GLView(Context context) {
         super(context);
         setEGLContextClientVersion(2);
@@ -24,7 +25,7 @@ public class GLView extends GLSurfaceView {
             @Override
             public void onSurfaceChanged(GL10 gl, int width, int height) {
 //                gl.glViewport(0,0,width,height);
-                NdkLib.create(width,height);
+                glObje = NdkLib.create(width,height);
 //                int i = GLES20.glCreateShader(GLES20.GL_VERTEX_SHADER);
 //                System.out.println("libESV2jni  "+i);
             }
@@ -33,7 +34,7 @@ public class GLView extends GLSurfaceView {
             public void onDrawFrame(GL10 gl) {
 //                gl.glClearColor(1,1,1,1);
 //                gl.glClear(GLES20.GL_COLOR_BUFFER_BIT);
-                NdkLib.clearView();
+                NdkLib.clearView(glObje);
             }
         });
     }

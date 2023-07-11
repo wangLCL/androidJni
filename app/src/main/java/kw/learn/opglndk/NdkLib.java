@@ -10,7 +10,7 @@ public class NdkLib {
         System.loadLibrary("opglndk");
     }
 
-    public static native void create(int width, int height);
+    public static native long create(int width, int height);
 
-    public static native void clearView() ;
+    public static native void clearView(long obj) ;
 }
